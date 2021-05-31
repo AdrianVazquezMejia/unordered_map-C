@@ -85,6 +85,56 @@ void test_Insert_Collider_Value_Value_Second_Item(void)
 	TEST_ASSERT_EQUAL(second_item->value_,expected_value);
 	delete_map(test_hash_table);
 }
+
+void test_Retrieve_A_Non_Collider_Value(void){
+	size_t size = 10;
+	unordered_map_t* test_hash_table = new_unordered_map(size);
+
+	int expected_key = 1;
+	int expected_value =11;
+	int actual_value = 0;
+
+
+	unordered_map_insert(test_hash_table, expected_key, expected_value);
+
+	actual_value =*unordered_map_find(test_hash_table,expected_key);
+
+	TEST_ASSERT_EQUAL(actual_value, expected_value);
+	delete_map(test_hash_table);
+}
+void test_Retrieve_A_Collider_Value(void){
+	size_t size = 10;
+	unordered_map_t* test_hash_table = new_unordered_map(size);
+	int collider_key =1;
+	int collider_value = 1;
+	int expected_key = 11;
+	int expected_value =11;
+	int actual_value = 0;
+
+
+	unordered_map_insert(test_hash_table, collider_key, collider_value);
+	unordered_map_insert(test_hash_table, expected_key, expected_value);
+
+	actual_value =*unordered_map_find(test_hash_table,expected_key);
+
+	TEST_ASSERT_EQUAL(actual_value, expected_value);
+	delete_map(test_hash_table);
+}
+
+void test_Retrieve_A_Non_Exiting_Value(void){
+	size_t size = 10;
+	unordered_map_t* test_hash_table = new_unordered_map(size);
+
+	int test_key = 1;
+	int* expected_value =NULL;
+	int* actual_value = NULL;
+
+	actual_value =unordered_map_find(test_hash_table,test_key);
+
+	TEST_ASSERT_EQUAL(actual_value, expected_value);
+	delete_map(test_hash_table);
+}
+
 int main(void)
 {
 UNITY_BEGIN();
@@ -96,6 +146,9 @@ UNITY_BEGIN();
 	RUN_TEST(test_Insert_Non_Collider_Value_Key);
 	RUN_TEST(test_Insert_Collider_Value_Value_First_Item);
 	RUN_TEST(test_Insert_Collider_Value_Value_Second_Item);
+	RUN_TEST(test_Retrieve_A_Non_Collider_Value);
+	RUN_TEST(test_Retrieve_A_Collider_Value);
+	RUN_TEST(test_Retrieve_A_Non_Exiting_Value);
 
 return UNITY_END();
 }

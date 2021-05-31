@@ -24,4 +24,5 @@ typedef struct {
 int  unordered_map_insert(unordered_map_t* unordered_map, int key, int value);
 unordered_map_t* new_unordered_map(size_t size);
 void delete_map(unordered_map_t* unordered_map);
+int *unordered_map_find(unordered_map_t*unordered_map,int key);
 #endif /* UNORDERED_MAP_H_ */

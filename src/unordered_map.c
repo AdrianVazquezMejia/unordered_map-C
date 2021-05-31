@@ -51,3 +51,22 @@ int  unordered_map_insert(unordered_map_t* unordered_map, int key, int value){
 	}
 	return 0;
 }
+
+int *unordered_map_find(unordered_map_t*unordered_map, int key){
+
+	int hash_number = key%unordered_map->size_;
+
+	item_t *current = unordered_map->hash_table_[hash_number];
+
+	if(current==NULL){
+		return NULL;
+	}
+
+	while(current->next_!=NULL&&current->key_!=key){
+		current = (item_t*)current->next_;
+	}
+
+	int *i =&current->value_;
+	return i;
+}
+
