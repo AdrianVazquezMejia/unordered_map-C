@@ -9,19 +9,24 @@
 #include <stdio.h>
 #include "unordered_map.h"
 int main(){
-	printf("Adrian\n");
+	printf("Start the program\n");
 
 	size_t size = 10;
 	unordered_map_t* test_hash_table = new_unordered_map(size);
 
-	int test_key = 1;
-	int* expected_value =NULL;
-	int* actual_value = NULL;
-	printf("here Main\n");
+	int expected_key = 1;
+	int expected_value =1;
+	int* actual_value_pointer ;
 
-	actual_value =unordered_map_find(test_hash_table,test_key);
+	//unordered_map_insert(test_hash_table,expected_key,expected_value);
+	actual_value_pointer = unordered_map_find(test_hash_table,expected_key);
 
-	printf("Actual value [%p] and expected value [%p]\n",actual_value,expected_value);
+	if(actual_value_pointer==NULL){
+		printf("Value Not found\n");
+	}else{
+		printf("Actual value [%d] and expected value [%d]\n",*actual_value_pointer,expected_value);
+	}
+
 	delete_map(test_hash_table);
 
 	printf("Success");
