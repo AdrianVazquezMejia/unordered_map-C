@@ -13,7 +13,7 @@
 unordered_map_t* new_unordered_map(size_t size){
 	unordered_map_t* new_hash_table = (unordered_map_t*)malloc(sizeof(unordered_map_t));
 	new_hash_table->size_ = size;
-	new_hash_table->hash_table_=(item_t**)malloc(size*sizeof(item_t));
+	new_hash_table->hash_table_=(item_t**)calloc(size,sizeof(item_t));
 	return new_hash_table;
 }
 

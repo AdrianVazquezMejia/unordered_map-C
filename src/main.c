@@ -14,17 +14,11 @@ int main(){
 	size_t size = 7;
 	unordered_map_t* test_hash_table = new_unordered_map(size);
 
-	//int expected_key = 1;
+	int expected_key = 1;
 	int expected_value =1;
 	int* actual_value_pointer ;
 
-	unordered_map_insert(test_hash_table,1200,0);
-	unordered_map_insert(test_hash_table,2400,1);
-	unordered_map_insert(test_hash_table,4800,2);
-	unordered_map_insert(test_hash_table,9600,3);
-	unordered_map_insert(test_hash_table,19200,4);
-	unordered_map_insert(test_hash_table,57600,5);
-	unordered_map_insert(test_hash_table,115200,6);
+	unordered_map_insert(test_hash_table,expected_key,expected_value);
 
 	actual_value_pointer = unordered_map_find(test_hash_table,19200);
 
