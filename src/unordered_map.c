@@ -25,6 +25,7 @@ void delete_map(unordered_map_t* unordered_map){
 			item_t* next = (item_t*)current->next_;
 			free(current);
 			current = next;
+
 		}
 	}
 	free(unordered_map->hash_table_);
